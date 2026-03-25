@@ -1,0 +1,1899 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مطعم الصرح السليم - Alsarh Alsaleem Restaurant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "مطعم الصرح السليم",
+  "alternateName": "Alsarh Alsaleem Restaurant",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "7504 سفيان بن عوف، العزيزية",
+    "addressLocality": "الرياض",
+    "postalCode": "14513",
+    "addressCountry": "SA"
+  },
+  "telephone": "+966599281184",
+  "openingHours": "Mo-Su 00:00-02:00,12:00-23:59",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "6"
+  },
+  "servesCuisine": ["Sudanese", "Grills", "Shawarma", "Mandi"],
+  "priceRange": "$$"
+}
+</script>
+
+<style>
+  :root {
+    --charcoal: #111111;
+    --charcoal-mid: #1a1a1a;
+    --charcoal-light: #242424;
+    --amber: #C8860A;
+    --amber-bright: #E09B12;
+    --amber-glow: #F5B731;
+    --wood: #4A2C12;
+    --cream: #F2EDE3;
+    --cream-dim: #C8BFA8;
+    --red: #B82025;
+    --white: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--charcoal);
+    color: var(--cream);
+    font-family: 'Cairo', sans-serif;
+    direction: rtl;
+    overflow-x: hidden;
+  }
+
+  /* ─── SCROLLBAR ─── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--charcoal); }
+  ::-webkit-scrollbar-thumb { background: var(--amber); border-radius: 3px; }
+
+  /* ─── HEADER ─── */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 0 24px;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(200,134,10,0.15);
+    transition: all 0.3s ease;
+  }
+
+  .logo-wrap {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+  .logo-ar {
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--amber-bright);
+    letter-spacing: 0;
+  }
+  .logo-en {
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--cream-dim);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: 'Playfair Display', serif;
+  }
+
+  nav { display: flex; align-items: center; gap: 6px; }
+
+  nav a {
+    color: var(--cream-dim);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 10px;
+    border-radius: 4px;
+    transition: color 0.2s, background 0.2s;
+    white-space: nowrap;
+  }
+  nav a:hover { color: var(--amber-bright); background: rgba(200,134,10,0.08); }
+
+  .nav-cta {
+    background: var(--amber) !important;
+    color: var(--charcoal) !important;
+    font-weight: 900 !important;
+    padding: 8px 16px !important;
+    border-radius: 6px;
+    margin-right: 8px;
+    font-size: 13px !important;
+  }
+  .nav-cta:hover { background: var(--amber-bright) !important; }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 6px;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--cream);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  .mobile-drawer {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgba(0,0,0,0.6);
+  }
+  .mobile-drawer.open { display: block; }
+  .drawer-panel {
+    position: absolute;
+    top: 0; right: 0;
+    width: 280px;
+    height: 100%;
+    background: var(--charcoal-mid);
+    border-left: 1px solid rgba(200,134,10,0.2);
+    padding: 80px 24px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .drawer-panel a {
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 12px 16px;
+    border-radius: 6px;
+    transition: background 0.2s;
+  }
+  .drawer-panel a:hover { background: rgba(200,134,10,0.12); color: var(--amber-bright); }
+  .drawer-cta {
+    background: var(--amber) !important;
+    color: var(--charcoal) !important;
+    text-align: center;
+    margin-top: 16px;
+    border-radius: 8px !important;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to bottom, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.5) 40%, rgba(10,10,10,0.92) 85%, var(--charcoal) 100%),
+      linear-gradient(135deg, #1a0e05 0%, #2d1a08 30%, #1a120a 60%, #0a0a0a 100%);
+    background-size: cover, cover;
+  }
+
+  /* Charcoal fire texture overlay */
+  .hero-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 40%, rgba(200,134,10,0.12) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 60%, rgba(184,32,37,0.08) 0%, transparent 50%);
+  }
+
+  /* Animated ember particles */
+  .embers {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .ember {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--amber-glow);
+    animation: float-up linear infinite;
+    opacity: 0;
+  }
+  @keyframes float-up {
+    0% { opacity: 0; transform: translateY(0) scale(1); }
+    10% { opacity: 0.8; }
+    80% { opacity: 0.3; }
+    100% { opacity: 0; transform: translateY(-400px) scale(0.2) translateX(30px); }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 0 24px;
+    max-width: 800px;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    border: 1px solid var(--amber);
+    color: var(--amber);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    padding: 7px 20px;
+    border-radius: 40px;
+    margin-bottom: 28px;
+    font-family: 'Playfair Display', serif;
+    animation: fadeInDown 0.8s ease both;
+  }
+
+  .hero-rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 20px;
+    animation: fadeInDown 0.9s ease 0.1s both;
+  }
+  .stars { color: var(--amber-glow); font-size: 18px; letter-spacing: 2px; }
+  .rating-text { font-size: 13px; color: var(--cream-dim); font-weight: 600; }
+
+  .hero h1 {
+    font-size: clamp(36px, 8vw, 72px);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 10px;
+    animation: fadeInUp 0.9s ease 0.2s both;
+  }
+  .hero h1 span { color: var(--amber-bright); }
+
+  .hero-en {
+    font-size: clamp(14px, 2.5vw, 20px);
+    color: var(--cream-dim);
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    margin-bottom: 20px;
+    animation: fadeInUp 0.9s ease 0.3s both;
+  }
+
+  .hero-sub {
+    font-size: clamp(14px, 2vw, 17px);
+    color: var(--cream-dim);
+    line-height: 1.7;
+    margin-bottom: 8px;
+    animation: fadeInUp 0.9s ease 0.4s both;
+  }
+  .hero-sub-en {
+    font-size: 13px;
+    color: rgba(200,191,168,0.6);
+    margin-bottom: 40px;
+    animation: fadeInUp 0.9s ease 0.45s both;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeInUp 0.9s ease 0.5s both;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 800;
+    font-family: 'Cairo', sans-serif;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+  .btn-primary {
+    background: var(--amber);
+    color: var(--charcoal);
+  }
+  .btn-primary:hover { background: var(--amber-bright); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,134,10,0.4); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--cream);
+    border: 1.5px solid rgba(242,237,227,0.3);
+  }
+  .btn-outline:hover { border-color: var(--amber); color: var(--amber); transform: translateY(-2px); }
+
+  .btn-whatsapp {
+    background: #25D366;
+    color: white;
+  }
+  .btn-whatsapp:hover { background: #20ba5a; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,0.3); }
+
+  .btn-call {
+    background: transparent;
+    color: var(--cream);
+    border: 1.5px solid rgba(242,237,227,0.25);
+  }
+  .btn-call:hover { border-color: var(--cream); transform: translateY(-2px); }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(200,191,168,0.4);
+    font-size: 11px;
+    letter-spacing: 2px;
+    animation: bounce 2s ease infinite;
+  }
+  .scroll-hint::after {
+    content: '';
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(200,134,10,0.6), transparent);
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* ─── SECTION COMMON ─── */
+  section { padding: 80px 24px; }
+
+  .section-label {
+    display: inline-block;
+    color: var(--amber);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .section-title-en {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(14px, 2vw, 18px);
+    color: var(--cream-dim);
+    font-style: italic;
+    margin-bottom: 24px;
+  }
+  .divider {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(to left, var(--amber), transparent);
+    margin-bottom: 32px;
+    border-radius: 2px;
+  }
+
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  /* ─── STATS BAR ─── */
+  .stats-bar {
+    background: var(--charcoal-mid);
+    border-top: 1px solid rgba(200,134,10,0.15);
+    border-bottom: 1px solid rgba(200,134,10,0.15);
+    padding: 28px 24px;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .stat-item {}
+  .stat-num {
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--amber-bright);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 13px;
+    color: var(--cream-dim);
+    margin-top: 6px;
+    font-weight: 600;
+  }
+  .stat-label-en {
+    font-size: 10px;
+    color: rgba(200,191,168,0.45);
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+  }
+
+  /* ─── ABOUT ─── */
+  .about-section {
+    background: var(--charcoal-mid);
+    position: relative;
+    overflow: hidden;
+  }
+  .about-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 20% 50%, rgba(200,134,10,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .about-text p {
+    font-size: 15px;
+    line-height: 1.85;
+    color: var(--cream-dim);
+    margin-bottom: 16px;
+  }
+  .about-text p.en {
+    font-size: 13px;
+    color: rgba(200,191,168,0.5);
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    line-height: 1.7;
+    direction: ltr;
+    text-align: right;
+  }
+  .about-visual {
+    position: relative;
+  }
+  .about-card {
+    background: var(--charcoal-light);
+    border: 1px solid rgba(200,134,10,0.15);
+    border-radius: 16px;
+    padding: 40px 32px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .about-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--amber), var(--red), var(--amber));
+  }
+  .about-card-icon {
+    font-size: 64px;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .about-card h3 {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--amber-bright);
+    margin-bottom: 8px;
+  }
+  .about-card p {
+    font-size: 14px;
+    color: var(--cream-dim);
+    line-height: 1.6;
+  }
+  .open-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(37,211,102,0.12);
+    border: 1px solid rgba(37,211,102,0.3);
+    color: #25D366;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-top: 20px;
+  }
+  .open-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #25D366;
+    animation: pulse-green 1.5s ease infinite;
+  }
+  @keyframes pulse-green {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.4); }
+  }
+
+  /* ─── MENU ─── */
+  .menu-section { background: var(--charcoal); }
+
+  .menu-tabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 36px;
+    justify-content: center;
+  }
+  .tab-btn {
+    background: transparent;
+    border: 1.5px solid rgba(200,134,10,0.2);
+    color: var(--cream-dim);
+    padding: 9px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Cairo', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    transition: all 0.2s;
+  }
+  .tab-btn:hover { border-color: var(--amber); color: var(--amber); }
+  .tab-btn.active {
+    background: var(--amber);
+    border-color: var(--amber);
+    color: var(--charcoal);
+  }
+  .tab-en { font-size: 10px; opacity: 0.7; font-family: 'Playfair Display', serif; display: block; margin-top: 2px; }
+
+  .menu-panel { display: none; }
+  .menu-panel.active { display: block; }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+
+  .menu-card {
+    background: var(--charcoal-light);
+    border: 1px solid rgba(200,134,10,0.12);
+    border-radius: 12px;
+    padding: 20px;
+    transition: border-color 0.2s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .menu-card:hover { border-color: rgba(200,134,10,0.4); transform: translateY(-3px); }
+  .menu-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--amber), transparent);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .menu-card:hover::before { opacity: 1; }
+
+  .menu-card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+  .menu-name-ar { font-size: 16px; font-weight: 800; color: var(--amber-bright); line-height: 1.3; }
+  .menu-name-en { font-size: 11px; color: var(--cream-dim); font-family: 'Playfair Display', serif; font-style: italic; margin-top: 3px; }
+  .menu-price {
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--white);
+    white-space: nowrap;
+    direction: ltr;
+  }
+  .menu-price span { font-size: 11px; color: var(--cream-dim); font-weight: 400; }
+  .menu-price-multi {
+    font-size: 12px;
+    color: var(--cream-dim);
+    margin-top: 10px;
+    line-height: 1.6;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 10px;
+    direction: ltr;
+    text-align: left;
+  }
+  .menu-price-multi strong { color: var(--amber); }
+
+  /* ─── POPULAR DISHES ─── */
+  .popular-section {
+    background: var(--charcoal-mid);
+    position: relative;
+    overflow: hidden;
+  }
+  .popular-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 80% 50%, rgba(184,32,37,0.05) 0%, transparent 60%);
+  }
+
+  .popular-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  .popular-card {
+    background: var(--charcoal-light);
+    border: 1px solid rgba(200,134,10,0.1);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s;
+    text-align: center;
+  }
+  .popular-card:hover { transform: translateY(-5px); border-color: rgba(200,134,10,0.35); }
+  .popular-img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: #0f0f0f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 52px;
+    position: relative;
+    overflow: hidden;
+  }
+  .popular-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(26,26,26,0.8), transparent);
+  }
+  .popular-card-body { padding: 16px; }
+  .popular-name-ar { font-size: 15px; font-weight: 800; color: var(--amber-bright); margin-bottom: 4px; }
+  .popular-name-en { font-size: 11px; color: var(--cream-dim); font-family: 'Playfair Display', serif; font-style: italic; }
+
+  /* ─── WHY US ─── */
+  .why-section { background: var(--charcoal); }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 24px;
+  }
+  .why-card {
+    background: var(--charcoal-mid);
+    border: 1px solid rgba(200,134,10,0.1);
+    border-radius: 14px;
+    padding: 32px 20px;
+    text-align: center;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .why-card:hover { border-color: rgba(200,134,10,0.4); transform: translateY(-4px); }
+  .why-icon { font-size: 40px; margin-bottom: 14px; display: block; }
+  .why-title-ar { font-size: 15px; font-weight: 800; color: var(--white); margin-bottom: 4px; }
+  .why-title-en { font-size: 11px; color: var(--cream-dim); font-family: 'Playfair Display', serif; font-style: italic; }
+
+  /* ─── REVIEWS ─── */
+  .reviews-section {
+    background: var(--charcoal-mid);
+    position: relative;
+  }
+  .reviews-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(200,134,10,0.05) 0%, transparent 60%);
+  }
+
+  .overall-rating {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .big-rating {
+    font-size: 80px;
+    font-weight: 900;
+    color: var(--amber-bright);
+    line-height: 1;
+  }
+  .big-stars { font-size: 28px; color: var(--amber-glow); margin: 8px 0; letter-spacing: 4px; }
+  .big-count { font-size: 14px; color: var(--cream-dim); }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  .review-card {
+    background: var(--charcoal-light);
+    border: 1px solid rgba(200,134,10,0.12);
+    border-radius: 14px;
+    padding: 24px;
+  }
+  .review-card-top { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .reviewer-avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--amber);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: var(--charcoal);
+    font-weight: 900;
+    flex-shrink: 0;
+  }
+  .reviewer-name { font-size: 15px; font-weight: 800; color: var(--white); }
+  .reviewer-stars { color: var(--amber-glow); font-size: 13px; }
+  .review-text { font-size: 14px; color: var(--cream-dim); line-height: 1.75; }
+  .review-tag {
+    display: inline-block;
+    background: rgba(200,134,10,0.12);
+    color: var(--amber);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-top: 12px;
+  }
+
+  /* ─── VISIT US ─── */
+  .visit-section { background: var(--charcoal); }
+  .visit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .info-item:last-of-type { border-bottom: none; }
+  .info-icon {
+    width: 44px; height: 44px;
+    background: rgba(200,134,10,0.12);
+    border: 1px solid rgba(200,134,10,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .info-label { font-size: 12px; color: var(--amber); font-weight: 700; letter-spacing: 1px; margin-bottom: 4px; }
+  .info-value { font-size: 15px; color: var(--white); font-weight: 600; line-height: 1.5; }
+  .info-value-en { font-size: 12px; color: var(--cream-dim); }
+
+  .visit-btns { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+
+  .map-frame {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(200,134,10,0.15);
+    height: 380px;
+    background: #111;
+  }
+  .map-frame iframe { width: 100%; height: 100%; border: none; display: block; }
+
+  /* ─── FAQ ─── */
+  .faq-section { background: var(--charcoal-mid); }
+  .faq-list { max-width: 720px; margin: 0 auto; }
+  .faq-item {
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    padding: 20px 0;
+    cursor: pointer;
+  }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-q {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  .faq-q-text { font-size: 16px; font-weight: 700; color: var(--white); }
+  .faq-toggle {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: rgba(200,134,10,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--amber);
+    font-size: 18px;
+    flex-shrink: 0;
+    transition: transform 0.3s;
+  }
+  .faq-a {
+    font-size: 14px;
+    color: var(--cream-dim);
+    line-height: 1.75;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s;
+    padding-top: 0;
+  }
+  .faq-item.open .faq-a { max-height: 200px; padding-top: 14px; }
+  .faq-item.open .faq-toggle { transform: rotate(45deg); background: rgba(200,134,10,0.25); }
+
+  /* ─── FINAL CTA ─── */
+  .cta-section {
+    background: linear-gradient(135deg, #1a0e05, #0a0a0a);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 100px 24px;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 50%, rgba(200,134,10,0.1) 0%, transparent 70%);
+  }
+  .cta-section .section-title { font-size: clamp(32px, 6vw, 56px); margin-bottom: 8px; }
+  .cta-badge {
+    font-size: clamp(14px, 3vw, 20px);
+    color: var(--amber);
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    margin-bottom: 32px;
+    display: block;
+  }
+  .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #080808;
+    border-top: 1px solid rgba(200,134,10,0.12);
+    padding: 48px 24px 28px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: start;
+    max-width: 900px;
+    margin: 0 auto 32px;
+  }
+  .footer-brand .logo-ar { font-size: 22px; }
+  .footer-brand p { font-size: 13px; color: var(--cream-dim); margin-top: 8px; line-height: 1.6; }
+  .footer-links { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+  .footer-links a { color: var(--cream-dim); text-decoration: none; font-size: 13px; font-weight: 600; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--amber); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: gap;
+    max-width: 900px;
+    margin: 0 auto;
+    gap: 12px;
+  }
+  .footer-bottom p { font-size: 12px; color: rgba(200,191,168,0.4); }
+
+  /* ─── FLOATING BUTTONS ─── */
+  .float-wa {
+    position: fixed;
+    bottom: 80px;
+    left: 20px;
+    z-index: 900;
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: #25D366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    animation: float-pulse 3s ease infinite;
+    transition: transform 0.2s;
+  }
+  .float-wa:hover { transform: scale(1.1); }
+  .float-call {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 900;
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: var(--amber);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(200,134,10,0.4);
+    transition: transform 0.2s;
+  }
+  .float-call:hover { transform: scale(1.1); }
+
+  @keyframes float-pulse {
+    0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
+    50% { box-shadow: 0 4px 32px rgba(37,211,102,0.7); }
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    nav { display: none; }
+    .hamburger { display: flex; }
+    .about-grid, .visit-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .map-frame { height: 260px; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-links { flex-direction: row; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    header { padding: 0 16px; }
+  }
+  @media (max-width: 480px) {
+    section { padding: 60px 16px; }
+    .hero-btns { flex-direction: column; align-items: center; }
+    .btn { width: 100%; justify-content: center; }
+    .popular-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- FLOATING BUTTONS -->
+<a href="https://wa.me/966599281184" class="float-wa" target="_blank" title="WhatsApp">💬</a>
+<a href="tel:0599281184" class="float-call" title="اتصل بنا">📞</a>
+
+<!-- HEADER -->
+<header id="header">
+  <div class="logo-wrap">
+    <span class="logo-ar">مطعم الصرح السليم</span>
+    <span class="logo-en">Alsarh Alsaleem</span>
+  </div>
+  <nav>
+    <a href="#home">الرئيسية</a>
+    <a href="#menu">القائمة</a>
+    <a href="#popular">الأطباق المميزة</a>
+    <a href="#reviews">التقييمات</a>
+    <a href="#visit">زورونا</a>
+    <a href="tel:0599281184" class="nav-cta">📞 احجز طاولة</a>
+  </nav>
+  <div class="hamburger" id="hamburger" onclick="toggleDrawer()">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<!-- MOBILE DRAWER -->
+<div class="mobile-drawer" id="drawer" onclick="closeDrawer(event)">
+  <div class="drawer-panel">
+    <a href="#home" onclick="closeAll()">🏠 الرئيسية <small style="display:block;font-size:11px;opacity:.5;">Home</small></a>
+    <a href="#menu" onclick="closeAll()">📋 القائمة <small style="display:block;font-size:11px;opacity:.5;">Menu</small></a>
+    <a href="#popular" onclick="closeAll()">⭐ الأطباق المميزة <small style="display:block;font-size:11px;opacity:.5;">Popular Dishes</small></a>
+    <a href="#reviews" onclick="closeAll()">💬 التقييمات <small style="display:block;font-size:11px;opacity:.5;">Reviews</small></a>
+    <a href="#visit" onclick="closeAll()">📍 زورونا <small style="display:block;font-size:11px;opacity:.5;">Visit Us</small></a>
+    <a href="tel:0599281184" class="drawer-cta" onclick="closeAll()">📞 اتصل بنا الآن</a>
+    <a href="https://wa.me/966599281184" target="_blank" style="background:#25D366;color:white;text-align:center;border-radius:8px;margin-top:8px;" onclick="closeAll()">💬 واتساب</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="embers" id="embers"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">A Taste To Remember</div>
+
+    <div class="hero-rating">
+      <span class="stars">★★★★★</span>
+      <span class="rating-text">5.0 من 6 تقييمات على Google</span>
+    </div>
+
+    <h1>مطعم <span>الصرح السليم</span></h1>
+    <p class="hero-en">Where Every Bite Tells a Story</p>
+
+    <p class="hero-sub">مشاوي سودانية أصيلة — مندي على الفحم، شاورما، كباب، وأكثر</p>
+    <p class="hero-sub-en">Authentic Sudanese grills — Mandi on charcoal, shawarma, kebab & more</p>
+
+    <div class="hero-btns">
+      <a href="#menu" class="btn btn-primary">📋 عرض القائمة · View Menu</a>
+      <a href="https://wa.me/966599281184" class="btn btn-whatsapp" target="_blank">💬 اطلب عبر واتساب</a>
+      <a href="tel:0599281184" class="btn btn-call">📞 اتصل الآن</a>
+    </div>
+  </div>
+
+  <div class="scroll-hint">اكتشف</div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar reveal">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <div class="stat-num">5.0 ⭐</div>
+      <div class="stat-label">تقييم جوجل</div>
+      <div class="stat-label-en">Google Rating</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">6+</div>
+      <div class="stat-label">تقييم موثق</div>
+      <div class="stat-label-en">Reviews</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">2 ص</div>
+      <div class="stat-label">يغلق الساعة</div>
+      <div class="stat-label-en">Closes 2 AM</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">🔥</div>
+      <div class="stat-label">مندي على الفحم</div>
+      <div class="stat-label-en">Charcoal Mandi</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <span class="section-label">قصتنا · Our Story</span>
+        <h2 class="section-title">عن <span style="color:var(--amber-bright)">الصرح السليم</span></h2>
+        <p class="section-title-en">About Alsarh Alsaleem</p>
+        <div class="divider"></div>
+        <p>مطعم الصرح السليم وجهة الذواقة في حي العزيزية بالرياض. نقدم أشهى المشاوي السودانية الأصيلة والمندي على الفحم، في أجواء دافئة وخدمة متميزة تجعلك تعود مراراً.</p>
+        <p class="en">Alsarh Alsaleem is the destination for food lovers in Al Aziziyah, Riyadh — serving authentic Sudanese grills and charcoal mandi in a warm, welcoming atmosphere that keeps guests coming back.</p>
+        <p>نفخر بطاقم عمل محترف يرحب بضيوفه بابتسامة وكرم أصيل، ونكهات تعيدك إلى الذاكرة والشوق.</p>
+
+        <div class="visit-btns" style="margin-top:28px;">
+          <a href="#menu" class="btn btn-primary">اطلع على قائمتنا</a>
+          <a href="tel:0599281184" class="btn btn-outline">تواصل معنا</a>
+        </div>
+      </div>
+
+      <div class="about-visual reveal">
+        <div class="about-card">
+          <span class="about-card-icon">🍖</span>
+          <h3>مشاوي سودانية أصيلة</h3>
+          <p>كباب، شاورما، مندي على الفحم — نكهات موروثة بأسلوب راقٍ</p>
+          <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:13px;color:rgba(200,191,168,0.5);margin-top:8px;">Kebab · Shawarma · Charcoal Mandi</p>
+
+          <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.07);">
+            <div style="display:flex;justify-content:space-around;text-align:center;">
+              <div>
+                <div style="font-size:24px;font-weight:900;color:var(--amber-bright);">5.0</div>
+                <div style="font-size:11px;color:var(--cream-dim);">تقييم</div>
+              </div>
+              <div>
+                <div style="font-size:24px;font-weight:900;color:var(--amber-bright);">حتى 2ص</div>
+                <div style="font-size:11px;color:var(--cream-dim);">الدوام</div>
+              </div>
+              <div>
+                <div style="font-size:24px;font-weight:900;color:var(--amber-bright);">العزيزية</div>
+                <div style="font-size:11px;color:var(--cream-dim);">الموقع</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="open-badge">
+            <span class="open-dot"></span>
+            مفتوح الآن · Open Now
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu-section" id="menu">
+  <div class="container">
+    <div style="text-align:center;" class="reveal">
+      <span class="section-label">القائمة الكاملة · Full Menu</span>
+      <h2 class="section-title">اختر طبقك المفضل</h2>
+      <p class="section-title-en">Choose Your Favourite</p>
+      <div class="divider" style="margin: 0 auto 40px;"></div>
+    </div>
+
+    <div class="menu-tabs reveal">
+      <button class="tab-btn active" onclick="switchTab('sandwiches', this)">
+        السندويتشات<span class="tab-en">Sandwiches</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('meals', this)">
+        الوجبات<span class="tab-en">Meals</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('shawarma', this)">
+        الشاورما<span class="tab-en">Shawarma</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('chicken', this)">
+        الدجاج<span class="tab-en">Chicken</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('sides', this)">
+        الإضافات<span class="tab-en">Extras / Sides</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('drinks', this)">
+        المشروبات<span class="tab-en">Drinks</span>
+      </button>
+    </div>
+
+    <!-- SANDWICHES -->
+    <div class="menu-panel active" id="tab-sandwiches">
+      <div class="menu-grid">
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">سندويتش كباب لحم</div><div class="menu-name-en">Meat Kebab Sandwich</div></div>
+            <div class="menu-price">12 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">سندويتش كباب دجاج</div><div class="menu-name-en">Chicken Kebab Sandwich</div></div>
+            <div class="menu-price">10 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">سندويتش أوصال لحم</div><div class="menu-name-en">Meat Awsal Sandwich</div></div>
+            <div class="menu-price">10 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">سندويتش شيش طاووق بالعظم</div><div class="menu-name-en">Bone-in Shish Tawook Sandwich</div></div>
+            <div class="menu-price">10 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">سندويتش كفتة مشويات</div><div class="menu-name-en">Mixed Grill Kofta Sandwich</div></div>
+            <div class="menu-price">10 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">سندويتش بع الفحم</div><div class="menu-name-en">Charcoal Sandwich</div></div>
+            <div class="menu-price">15 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">سندويتش مشويات + سندويتش مجاني</div><div class="menu-name-en">Grill Sandwich + Free Sandwich</div></div>
+            <div class="menu-price">24 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">سندويتش شاروخ + سندويتش مجاني</div><div class="menu-name-en">Sharookh Sandwich + Free One</div></div>
+            <div class="menu-price">24 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">سندويتش شاورما دجاج</div><div class="menu-name-en">Chicken Shawarma Sandwich</div></div>
+            <div class="menu-price">9 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">سندويتش شاورما لحم</div><div class="menu-name-en">Meat Shawarma Sandwich</div></div>
+            <div class="menu-price">9 <span>ر.س</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MEALS -->
+    <div class="menu-panel" id="tab-meals">
+      <div class="menu-grid">
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">شواية دجاج + الأرز + شوربة</div><div class="menu-name-en">Chicken Grill + Rice + Soup</div></div>
+          </div>
+          <div class="menu-price-multi">
+            <strong>1 نفر:</strong> 22 ر.س &nbsp;|&nbsp; <strong>2 نفر:</strong> 40 ر.س &nbsp;|&nbsp; <strong>3 نفر:</strong> 58 ر.س
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">حبة دجاج + نص مجاني</div><div class="menu-name-en">1 Chicken + Half Free</div></div>
+            <div class="menu-price">40 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">2 حبة + احبة مجاني</div><div class="menu-name-en">2 Chickens + 1 Free</div></div>
+            <div class="menu-price">80 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">2 صحن شاورما صغير + صحن مجاناً</div><div class="menu-name-en">2 Small Shawarma Plates + 1 Free</div></div>
+            <div class="menu-price">40 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">مندي على الفحم</div><div class="menu-name-en">Mandi on Charcoal ⭐</div></div>
+            <div class="menu-price" style="color:var(--amber-bright);">طازج 🔥</div>
+          </div>
+          <div style="font-size:12px;color:var(--amber);margin-top:8px;">الطبق الأشهر والأكثر طلباً</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SHAWARMA -->
+    <div class="menu-panel" id="tab-shawarma">
+      <div class="menu-grid">
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">شاورما دجاج صغير</div><div class="menu-name-en">Small Chicken Shawarma</div></div>
+            <div class="menu-price">20 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">شاورما دجاج كبير</div><div class="menu-name-en">Large Chicken Shawarma</div></div>
+            <div class="menu-price">35 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">شاورما لحم صغير</div><div class="menu-name-en">Small Meat Shawarma</div></div>
+            <div class="menu-price">22 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">شاورما لحم كبير</div><div class="menu-name-en">Large Meat Shawarma</div></div>
+            <div class="menu-price">40 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">شاورما مشاويات صغير</div><div class="menu-name-en">Small Mixed Grill Shawarma</div></div>
+            <div class="menu-price">28 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">شاورما مشاويات كبير</div><div class="menu-name-en">Large Mixed Grill Shawarma</div></div>
+            <div class="menu-price">54 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">شاورما ماهر صغير</div><div class="menu-name-en">Maher Shawarma Small</div></div>
+            <div class="menu-price">56 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">صحن شاورما دجاج متوسط</div><div class="menu-name-en">Medium Chicken Shawarma Plate</div></div>
+            <div class="menu-price">13 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">دجاج شاورمة مع الأرز</div><div class="menu-name-en">Chicken Shawarma with Rice</div></div>
+            <div class="menu-price">13 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">سندويتش شاورما دجاج</div><div class="menu-name-en">Chicken Shawarma Sandwich</div></div>
+            <div class="menu-price">9 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">سندويتش شاورما لحم</div><div class="menu-name-en">Meat Shawarma Sandwich</div></div>
+            <div class="menu-price">9 <span>ر.س</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHICKEN -->
+    <div class="menu-panel" id="tab-chicken">
+      <div class="menu-grid">
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">دجاج شواية سادة</div><div class="menu-name-en">Plain Grilled Chicken</div></div>
+          </div>
+          <div class="menu-price-multi">
+            <strong>ربع:</strong> 13 ر.س &nbsp;|&nbsp; <strong>نص:</strong> 18 ر.س &nbsp;|&nbsp; <strong>حبة:</strong> 35 ر.س
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">دجاج شواية مع الأرز</div><div class="menu-name-en">Grilled Chicken with Rice</div></div>
+          </div>
+          <div class="menu-price-multi">
+            <strong>ربع:</strong> 13 ر.س &nbsp;|&nbsp; <strong>نص:</strong> 20 ر.س &nbsp;|&nbsp; <strong>حبة:</strong> 40 ر.س
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">دجاج فحم سادة</div><div class="menu-name-en">Plain Charcoal Chicken</div></div>
+          </div>
+          <div class="menu-price-multi">
+            <strong>ربع:</strong> 18 ر.س &nbsp;|&nbsp; <strong>نص:</strong> 35 ر.س &nbsp;|&nbsp; <strong>حبة:</strong> 65 ر.س
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">دجاج فحم مع الأرز</div><div class="menu-name-en">Charcoal Chicken with Rice</div></div>
+          </div>
+          <div class="menu-price-multi">
+            <strong>ربع:</strong> 21 ر.س &nbsp;|&nbsp; <strong>نص:</strong> 40 ر.س &nbsp;|&nbsp; <strong>حبة:</strong> 75 ر.س
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">دجاج مطبق لحم الأرز</div><div class="menu-name-en">Whole Chicken Mandi</div></div>
+            <div class="menu-price" style="color:var(--amber-bright);">🔥</div>
+          </div>
+          <div style="font-size:12px;color:var(--amber);margin-top:8px;">الأشهر — مندي على الفحم</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIDES / EXTRAS -->
+    <div class="menu-panel" id="tab-sides">
+      <div class="menu-grid">
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">حريشة</div><div class="menu-name-en">Harisha</div></div>
+            <div class="menu-price">2 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">فول</div><div class="menu-name-en">Foul</div></div>
+            <div class="menu-price">2 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">بيض</div><div class="menu-name-en">Eggs</div></div>
+            <div class="menu-price">2 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">عيش بالزبد</div><div class="menu-name-en">Bread with Butter</div></div>
+            <div class="menu-price">2 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">مجموعة المشاوي الفردية</div><div class="menu-name-en">Individual Grill Set</div></div>
+            <div class="menu-price">5 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">بطاطس</div><div class="menu-name-en">Fries</div></div>
+            <div class="menu-price">5 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">سلطة كبيرة</div><div class="menu-name-en">Large Salad</div></div>
+            <div class="menu-price">6 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">بابا غنوج</div><div class="menu-name-en">Baba Ghanouj</div></div>
+            <div class="menu-price">5 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">سلطة دجاج خضار</div><div class="menu-name-en">Chicken Vegetable Salad</div></div>
+            <div class="menu-price">6 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">سلطة خضراء</div><div class="menu-name-en">Green Salad</div></div>
+            <div class="menu-price">5 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">سمبوسة</div><div class="menu-name-en">Samboosa</div></div>
+            <div class="menu-price">5 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">شوربة</div><div class="menu-name-en">Soup</div></div>
+            <div class="menu-price">5 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">قهوة</div><div class="menu-name-en">Coffee</div></div>
+            <div class="menu-price">5 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">شاي</div><div class="menu-name-en">Tea</div></div>
+            <div class="menu-price">3 <span>ر.س</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DRINKS -->
+    <div class="menu-panel" id="tab-drinks">
+      <div class="menu-grid">
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">مياه</div><div class="menu-name-en">Water</div></div>
+            <div class="menu-price">1 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">مشروبات غازية</div><div class="menu-name-en">Soft Drinks</div></div>
+            <div class="menu-price">3 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">عصير برتقال</div><div class="menu-name-en">Orange Juice</div></div>
+            <div class="menu-price">9 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">عصير مانجو</div><div class="menu-name-en">Mango Juice</div></div>
+            <div class="menu-price">9 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">عصير رمان</div><div class="menu-name-en">Pomegranate Juice</div></div>
+            <div class="menu-price">9 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">عصير أفوكادو</div><div class="menu-name-en">Avocado Juice</div></div>
+            <div class="menu-price">9 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">عصير مشكل</div><div class="menu-name-en">Mixed Juice</div></div>
+            <div class="menu-price">9 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">كركديه</div><div class="menu-name-en">Karkadeh (Hibiscus)</div></div>
+            <div class="menu-price">9 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">عصير عنب</div><div class="menu-name-en">Grape Juice</div></div>
+            <div class="menu-price">9 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">بريموس (جوافة)</div><div class="menu-name-en">Guava Juice</div></div>
+            <div class="menu-price">6 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">قهوة</div><div class="menu-name-en">Coffee</div></div>
+            <div class="menu-price">5 <span>ر.س</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-top">
+            <div><div class="menu-name-ar">شاي</div><div class="menu-name-en">Tea</div></div>
+            <div class="menu-price">3 <span>ر.س</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- POPULAR DISHES -->
+<section class="popular-section" id="popular">
+  <div class="container">
+    <div style="text-align:center;" class="reveal">
+      <span class="section-label">الأكثر طلباً · Most Ordered</span>
+      <h2 class="section-title">الأطباق المميزة</h2>
+      <p class="section-title-en">Popular Dishes</p>
+      <div class="divider" style="margin: 0 auto 40px;"></div>
+    </div>
+
+    <div class="popular-grid">
+      <div class="popular-card reveal">
+        <div class="popular-img">🍖</div>
+        <div class="popular-card-body">
+          <div class="popular-name-ar">مندي على الفحم</div>
+          <div class="popular-name-en">Charcoal Mandi ⭐ الأشهر</div>
+        </div>
+      </div>
+      <div class="popular-card reveal">
+        <div class="popular-img">🥙</div>
+        <div class="popular-card-body">
+          <div class="popular-name-ar">شاورما دجاج</div>
+          <div class="popular-name-en">Chicken Shawarma</div>
+        </div>
+      </div>
+      <div class="popular-card reveal">
+        <div class="popular-img">🔥</div>
+        <div class="popular-card-body">
+          <div class="popular-name-ar">مشكل مشاوي</div>
+          <div class="popular-name-en">Mixed Grill Platter</div>
+        </div>
+      </div>
+      <div class="popular-card reveal">
+        <div class="popular-img">🍗</div>
+        <div class="popular-card-body">
+          <div class="popular-name-ar">دجاج فحم بالأرز</div>
+          <div class="popular-name-en">Charcoal Chicken + Rice</div>
+        </div>
+      </div>
+      <div class="popular-card reveal">
+        <div class="popular-img">🥙</div>
+        <div class="popular-card-body">
+          <div class="popular-name-ar">كباب لحم</div>
+          <div class="popular-name-en">Meat Kebab</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-section">
+  <div class="container">
+    <div style="text-align:center;" class="reveal">
+      <span class="section-label">لماذا نحن · Why Us</span>
+      <h2 class="section-title">لماذا الصرح السليم؟</h2>
+      <p class="section-title-en">Why Choose Alsarh Alsaleem?</p>
+      <div class="divider" style="margin: 0 auto 40px;"></div>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <span class="why-icon">🔥</span>
+        <div class="why-title-ar">مندي على الفحم الحقيقي</div>
+        <div class="why-title-en">Authentic Charcoal Mandi</div>
+      </div>
+      <div class="why-card reveal">
+        <span class="why-icon">😊</span>
+        <div class="why-title-ar">طاقم بابتسامة وكرم أصيل</div>
+        <div class="why-title-en">Friendly & Generous Team</div>
+      </div>
+      <div class="why-card reveal">
+        <span class="why-icon">🌟</span>
+        <div class="why-title-ar">تقييم 5.0 على جوجل</div>
+        <div class="why-title-en">5-Star Google Rating</div>
+      </div>
+      <div class="why-card reveal">
+        <span class="why-icon">🕒</span>
+        <div class="why-title-ar">مفتوح حتى الساعة 2 صباحاً</div>
+        <div class="why-title-en">Open Until 2 AM</div>
+      </div>
+      <div class="why-card reveal">
+        <span class="why-icon">👨‍👩‍👧</span>
+        <div class="why-title-ar">مناسب للعائلات</div>
+        <div class="why-title-en">Family Friendly</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews-section" id="reviews">
+  <div class="container">
+    <div style="text-align:center;" class="reveal">
+      <span class="section-label">آراء زوارنا · Guest Reviews</span>
+      <h2 class="section-title">ماذا قال زوارنا</h2>
+      <p class="section-title-en">What Our Guests Said</p>
+      <div class="divider" style="margin: 0 auto 32px;"></div>
+    </div>
+
+    <div class="overall-rating reveal">
+      <div class="big-rating">5.0</div>
+      <div class="big-stars">★★★★★</div>
+      <div class="big-count">من 6 تقييمات على Google · Based on 6 Google Reviews</div>
+    </div>
+
+    <div class="reviews-grid">
+      <div class="review-card reveal">
+        <div class="review-card-top">
+          <div class="reviewer-avatar">خ</div>
+          <div>
+            <div class="reviewer-name">خالد الشهري</div>
+            <div class="reviewer-stars">★★★★★</div>
+          </div>
+        </div>
+        <p class="review-text">مطعم جميل يجنن، الطاقم قمة في الأخلاق ويكفي ابتسامتهم وكرمهم ولقمتهم الطيبة، والشاورما عندهم شي ثاني!</p>
+        <span class="review-tag">شاورما 🥙</span>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="review-card-top">
+          <div class="reviewer-avatar">أ</div>
+          <div>
+            <div class="reviewer-name">أحمد عزمي</div>
+            <div class="reviewer-stars">★★★★★</div>
+          </div>
+        </div>
+        <p class="review-text">عن تجربة حاجة بسم الله ما شاء الله، خاصة المندي على الفحم — تجربة لا تُنسى!</p>
+        <span class="review-tag">مندي على الفحم 🔥</span>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="review-card-top">
+          <div class="reviewer-avatar">N</div>
+          <div>
+            <div class="reviewer-name">Noura Sharahely</div>
+            <div class="reviewer-stars">★★★★★</div>
+          </div>
+        </div>
+        <p class="review-text">Food: 5/5 · Service: 5/5 — An outstanding dining experience. The food and service both exceeded expectations.</p>
+        <span class="review-tag">تجربة مميزة ⭐</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT US -->
+<section class="visit-section" id="visit">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">زورونا · Visit Us</span>
+      <h2 class="section-title">الموقع وساعات العمل</h2>
+      <p class="section-title-en">Location & Opening Hours</p>
+      <div class="divider"></div>
+    </div>
+
+    <div class="visit-grid">
+      <div class="reveal">
+        <div class="info-item">
+          <div class="info-icon">📍</div>
+          <div>
+            <div class="info-label">العنوان · Address</div>
+            <div class="info-value">7504 سفيان بن عوف، العزيزية، الرياض 14513</div>
+            <div class="info-value-en">7504 Soufian Ibn Aouf, Al Aziziyah, Riyadh 14513</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">📞</div>
+          <div>
+            <div class="info-label">الهاتف · Phone</div>
+            <div class="info-value" style="direction:ltr;text-align:right;">059 928 1184</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">🕒</div>
+          <div>
+            <div class="info-label">ساعات العمل · Opening Hours</div>
+            <div class="info-value">
+              <span style="color:#25D366;font-size:13px;font-weight:700;">● مفتوح الآن</span><br>
+              يغلق الساعة 2:00 صباحاً · Closes 2 AM
+            </div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">🍽️</div>
+          <div>
+            <div class="info-label">الخدمات · Services</div>
+            <div class="info-value">جلوس داخلي · Dine-in<br>توصيل · Delivery</div>
+          </div>
+        </div>
+
+        <div class="visit-btns">
+          <a href="https://maps.google.com/?q=24.5881594,46.7826296" target="_blank" class="btn btn-primary">📍 احصل على الاتجاهات</a>
+          <a href="tel:0599281184" class="btn btn-outline">📞 اتصل الآن</a>
+          <a href="https://wa.me/966599281184" target="_blank" class="btn btn-whatsapp">💬 واتساب</a>
+        </div>
+      </div>
+
+      <div class="map-frame reveal">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3624.5!2d46.7826296!3d24.5881594!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDM1JzE3LjQiTiA0NsKwNDYnNTcuNSJF!5e0!3m2!1sar!2ssa!4v1"
+          allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <div style="text-align:center;" class="reveal">
+      <span class="section-label">الأسئلة الشائعة · FAQ</span>
+      <h2 class="section-title">أسئلة شائعة</h2>
+      <div class="divider" style="margin: 0 auto 40px;"></div>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item reveal" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span class="faq-q-text">هل تقدمون توصيل؟ · Do you offer delivery?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">نعم، نقدم خدمة التوصيل. تواصل معنا عبر واتساب أو اتصل بنا لتأكيد التوصيل إلى منطقتك.<br><em style="opacity:.6;font-family:'Playfair Display',serif;">Yes, we offer delivery. Contact us via WhatsApp or phone to confirm delivery to your area.</em></div>
+      </div>
+      <div class="faq-item reveal" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span class="faq-q-text">ما هي ساعات العمل؟ · What are your opening hours?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">المطعم مفتوح يومياً ويغلق الساعة الثانية صباحاً. تم التأكيد من قبل المطعم.<br><em style="opacity:.6;font-family:'Playfair Display',serif;">The restaurant is open daily and closes at 2 AM. Confirmed by the restaurant.</em></div>
+      </div>
+      <div class="faq-item reveal" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span class="faq-q-text">هل يوجد جلسات داخلية؟ · Is there dine-in seating?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">نعم، يوجد لدينا جلسات داخلية مريحة ومناسبة للعائلات والأصدقاء.<br><em style="opacity:.6;font-family:'Playfair Display',serif;">Yes, we have comfortable dine-in seating suitable for families and groups.</em></div>
+      </div>
+      <div class="faq-item reveal" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span class="faq-q-text">ما الذي يميز مطعمكم؟ · What makes you special?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">نتميز بالمندي على الفحم الأصيل، الشاورما اللذيذة، وطاقم يرحب بكم بابتسامة وكرم حقيقي — وهذا ما يجعل زوارنا يعودون دائماً!<br><em style="opacity:.6;font-family:'Playfair Display',serif;">We stand out for our authentic charcoal mandi, delicious shawarma, and a team that welcomes guests with a genuine smile — that's what keeps our guests coming back!</em></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta-section">
+  <div class="container" style="position:relative;z-index:1;">
+    <span class="section-label">A Taste To Remember</span>
+    <h2 class="section-title reveal">جرب تجربة لن تنساها</h2>
+    <span class="cta-badge reveal">An Experience You'll Never Forget</span>
+    <div class="cta-btns reveal">
+      <a href="#menu" class="btn btn-primary" style="font-size:16px;padding:16px 32px;">📋 عرض القائمة · View Menu</a>
+      <a href="https://wa.me/966599281184" target="_blank" class="btn btn-whatsapp" style="font-size:16px;padding:16px 32px;">💬 اطلب الآن · Order Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo-wrap">
+        <span class="logo-ar" style="font-size:22px;">مطعم الصرح السليم</span>
+        <span class="logo-en">Alsarh Alsaleem Restaurant</span>
+      </div>
+      <p style="margin-top:12px;">7504 سفيان بن عوف، العزيزية، الرياض<br>
+      📞 059 928 1184<br>
+      ⭐ 5.0 من 6 تقييمات على Google</p>
+    </div>
+    <div class="footer-links" style="text-align:right;">
+      <a href="#home">الرئيسية · Home</a>
+      <a href="#menu">القائمة · Menu</a>
+      <a href="#popular">الأطباق المميزة</a>
+      <a href="#reviews">التقييمات</a>
+      <a href="#visit">زورونا · Visit</a>
+      <a href="tel:0599281184">📞 059 928 1184</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 مطعم الصرح السليم · Alsarh Alsaleem Restaurant · الرياض</p>
+    <p style="color:rgba(200,191,168,0.3);">A Taste To Remember</p>
+  </div>
+</footer>
+
+<script>
+// Ember animation
+const embers = document.getElementById('embers');
+for (let i = 0; i < 18; i++) {
+  const e = document.createElement('div');
+  e.className = 'ember';
+  e.style.cssText = `
+    left: ${Math.random() * 100}%;
+    bottom: ${Math.random() * 30}%;
+    animation-duration: ${4 + Math.random() * 6}s;
+    animation-delay: ${Math.random() * 6}s;
+    width: ${2 + Math.random() * 3}px;
+    height: ${2 + Math.random() * 3}px;
+    background: ${Math.random() > 0.5 ? '#F5B731' : '#E09B12'};
+  `;
+  embers.appendChild(e);
+}
+
+// Menu tabs
+function switchTab(id, btn) {
+  document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// FAQ
+function toggleFaq(el) {
+  const wasOpen = el.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) el.classList.add('open');
+}
+
+// Mobile drawer
+function toggleDrawer() {
+  document.getElementById('drawer').classList.toggle('open');
+}
+function closeDrawer(e) {
+  if (e.target === e.currentTarget) closeAll();
+}
+function closeAll() {
+  document.getElementById('drawer').classList.remove('open');
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Sticky header tint
+window.addEventListener('scroll', () => {
+  const h = document.getElementById('header');
+  if (window.scrollY > 50) {
+    h.style.background = 'rgba(5,5,5,0.98)';
+    h.style.borderBottomColor = 'rgba(200,134,10,0.25)';
+  } else {
+    h.style.background = 'rgba(10,10,10,0.92)';
+    h.style.borderBottomColor = 'rgba(200,134,10,0.15)';
+  }
+});
+</script>
+</body>
+</html>
